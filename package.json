@@ -1,0 +1,30 @@
+{
+  "name": "trello-standups",
+  "version": "0.0.1",
+  "description": "What am I about?",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "moment": "^2.18.1",
+    "pg": "^7.4.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "sequelize": "^4.22.12",
+    "sqlite3": "^3.1.8",
+    "vdata-parser": "^0.1.5"
+  },
+  "engines": {
+    "node": "6.10.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}

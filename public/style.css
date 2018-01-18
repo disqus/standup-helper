@@ -1,0 +1,153 @@
+html, body {
+  font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif;
+	line-height: 1.5em;
+	background: rgb(0, 121, 191);
+  margin: 0;
+  height: 100%;
+}
+body {
+  background: url('bg.png');
+  background-size: cover;
+}
+.green {
+  color: green;
+}
+.red {
+  color: red;
+}
+#container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-content: left;
+  height: 100%;
+	width: calc(100% - 330px);
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+#container > div {
+  padding: 6px;
+  width: 300px;
+	border-radius: 3px;
+	background: #E2E4E6;
+	margin: 3px;
+}
+#container > div > div {
+	background: white;
+	border-radius: 3px;
+	border-bottom: 1px solid #ccc;
+	padding: 3px;
+	margin: 3px;
+	word-wrap: break-word;
+}
+
+.name {
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+.note {
+  background-color: #FFCC80 !important;
+}
+.interrupt {
+  background-color: #EF9A9A !important;
+}
+#container > div > div.inactive a {
+    font-weight: normal;
+    font-style: italic;
+    color: #666;
+}
+
+a {
+  color: #999;
+  text-decoration: none;
+  opacity: 0.6;
+  display: block;
+}
+b a {
+  color: black;
+  opacity: 1;
+}
+#filters {
+  padding: 10px;
+  background: #E0E1E2;
+  position: fixed;
+  width: 330px;
+  height: 100%;
+  right: 0;
+  z-index: 10;
+  box-shadow: 0 0 6px rgba(0,0,0,.4);
+  overflow-y: scroll;
+}
+#filters div {
+  padding: 6px;
+  display: block;
+  margin-bottom: 10px;
+}
+#boardFilters label {
+  padding: 5px;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 3px;
+  margin: 0 3px 3px 0;
+  white-space: nowrap;
+  display: inline-block;
+}
+#boardFilters input.board-filter + label {
+  padding-right: 10px;
+}
+#boardFilters input:checked + label{
+  background: rgba(255,255,255,0.5);
+}
+#boardFilters input {
+  display: none;
+}
+
+#timeoff div {
+  padding: 0;
+  margin: 0;
+  color: #666;
+}
+
+#diffs a, #review-diffs a {
+  color: #666;
+  opacity: 1;
+  position: relative;
+  top: -2px;
+}
+#diffs div, #review-diffs div {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+#diffs div img, #diffs div .noimg, #review-diffs div img, #review-diffs div .noimg {
+    height: 16px;
+    min-width: 16px;
+    display: inline-block;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0 2px 0 0;
+}
+#diffs div .noimg. #review-diffs div .noimg {
+  background: #999;
+  font-size: 10px;
+  line-height: 17px;
+  text-align: center;
+}
+#filters input#date {
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.5);
+  width: calc(100% - 20px);
+  padding: 5px;
+  margin-left: 5px;
+  font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+
+.hide-active .active,
+.hide-inactive .inactive,
+.hide-blocked .blocked,
+.hide-review .review,
+.hide-empty .empty,
+.hide-done .done {
+  display: none;
+}
