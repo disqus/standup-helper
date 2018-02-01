@@ -104,6 +104,60 @@ module.exports.responseHandler = (req, res, Standup, Users) => {
   }
 }
 
+module.exports.reminderHandler = (req, res, Standup, Users) => {
+  Standup.findOne({where:{createdAt:{$between:[moment().startOf('day').toDate(), moment().endOf('day').toDate()]}}})
+  .then(standup => {
+    var userArray = [];
+    var data = JSON.parse(standup.dataValues.data);
+    Object.keys(data).forEach(user => {
+      if (!data[user].responses || data[user].responses.length == 0) {
+        userArray.push(user);
+      }
+    });
+    var findUsers = [];
+    var requests = [];
+    userArray.forEach(user => {
+      findUsers.push(Users.findOne({where: {trello: user}}));
+    });
+    Promise.all(findUsers)
+    .then(userArray => {
+      userArray.forEach(user => {
+        var options = {
+          uri: 'https://slack.com/api/im.open',
+          qs: {
+            token: process.env.SLACK_TOKEN,
+            user: user.slack
+          },
+          json: true
+        }
+        requests.push(rp(options));
+      });
+      Promise.all(requests)
+      .then(requestArray => {
+        var requests2 = [];
+        requestArray.forEach((res2, i) => {
+          var options2 = {
+            uri: 'https://slack.com/api/chat.postMessage',
+            qs: {
+                token: process.env.SLACK_TOKEN,
+                channel: res2.channel.id,
+                username: BOT_NAME,
+                as_user: true,
+                text: '_Don\'t forget to submit your standup report!_'
+              },
+              json: true
+          };
+          requests2.push(rp(options2));
+        });
+        Promise.all(requests2)
+        .then(requestArray2 => {
+          res.send('Reminders sent!');
+        });
+      });
+    });
+  });
+}
+
 var interruptHandler = (req, res, body, response, Standup, Users) => {
   rp({
     uri: 'https://slack.com/api/dialog.open',

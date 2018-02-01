@@ -73,6 +73,7 @@ sequelize.authenticate()
 app.post('/s/', (req, res) => {slackbot.beginStandup(req, res, Standup, Users, Boards)});
 app.post('/m/', (req, res) => {slackbot.messageLogger(req, res, Standup, Users)});
 app.post('/b/', (req, res) => {slackbot.responseHandler(req, res, Standup, Users)});
+app.post('/r/', (req, res) => {slackbot.reminderHandler(req, res, Standup, Users)});
 
 // API - Standup View Endpoints
 app.get('/v', (req, res) => {dashboard.returnStandupData(req, res, Standup)});
