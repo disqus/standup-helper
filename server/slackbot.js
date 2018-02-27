@@ -5,7 +5,7 @@ var parser = require('vdata-parser');
 
 var BOT_NAME = 'Trello Standups'
 
-var trello = path => {return `https://api.trello.com/1/${path}?key=${process.env.TRELLO_KEY}&token=${process.env.TRELLO_TOKEN}`;}
+var trello = path => {return `https://api.trello.com/1/${path}?key=${process.env.SH_TRELLO_KEY}&token=${process.env.SH_TRELLO_TOKEN}`;}
 
 // Start standups
 module.exports.beginStandup = (req, res, Standup, Users, Boards) => {

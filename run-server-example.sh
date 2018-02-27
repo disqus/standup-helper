@@ -1,7 +1,7 @@
 # Trello API Key
-export TRELLO_KEY=
+export SH_TRELLO_KEY=
 # Trello API Token, generate one at https://trello.com/app-key
-export TRELLO_TOKEN=
+export SH_TRELLO_TOKEN=
 # Slack API Token, create a Slack App for your bot and its token will be listed
 export SLACK_TOKEN=
 # Phabricator API Token
