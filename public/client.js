@@ -37,7 +37,7 @@ $(function() {
                   !data[user].notes ||
                   data[user].notes && data[user].notes.length == 0
                 ) &&
-                !data[user].interrupts
+                !data[user].interrupts &&
                 !data[user].sidebars
               )
                 d.classList.add('empty');
