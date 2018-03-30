@@ -38,6 +38,7 @@ $(function() {
                   data[user].notes && data[user].notes.length == 0
                 ) &&
                 !data[user].interrupts
+                !data[user].sidebars
               )
                 d.classList.add('empty');
 
@@ -120,6 +121,14 @@ $(function() {
                   f.innerHTML = note.text;
                   $(d).append(f);
                 });
+              }
+              if (data[user].sidebars) {
+                data[user].sidebars.forEach(sidebar => {
+                  var g = document.createElement('div');
+                  g.classList.add('sidebar');
+                  g.innerHTML = sidebar.name;
+                  $(d).append(g)
+                })
               }
               $('#container').append(d);
           });
