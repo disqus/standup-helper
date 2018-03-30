@@ -609,7 +609,10 @@ var priorityStorer = (req, res, body, response, Standup, Users) => {
               }].concat(newStandup[trelloId].cards);
             } else {
               var cardidx = newStandup[trelloId].cards.findIndex(c => {
-              return c.text.indexOf(body.submission[field].substr(3)) > -1
+                var search = body.submission[field].substr(3);
+                // if the text was truncated, remove the ellipsis from search string
+                search = search.substr(search.length - 3) === '...' ? search.substr(0,search.length - 3) : search;
+                return c.text.indexOf(search) > -1
               });
               if (cardidx > -1) {
                 newStandup[trelloId].cards[cardidx].response = 'active';
