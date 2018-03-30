@@ -49,6 +49,9 @@ body {
 .note {
   background-color: #FFCC80 !important;
 }
+.sidebar {
+  background-color: #80FF8C !important;
+}
 .interrupt {
   background-color: #EF9A9A !important;
 }
